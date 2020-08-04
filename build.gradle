@@ -1,0 +1,57 @@
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.2.9")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+ext {
+    serenityVersion = '2.2.10'
+    slf4jVersion = '1.7.7'
+    serenityCucumberVersion = '2.2.5'
+
+    junitVersion = '4.12'
+    assertJVersion = '3.8.0'
+    logbackVersion = '1.2.3'
+}
+
+dependencies {
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.11.2"
+    implementation "org.apache.commons:commons-collections4:4.4"
+    testCompile "net.serenity-bdd:serenity-core:${serenityVersion}",
+            "net.serenity-bdd:serenity-cucumber5:${serenityCucumberVersion}",
+            "net.serenity-bdd:serenity-screenplay:${serenityVersion}",
+            "net.serenity-bdd:serenity-screenplay-rest:${serenityVersion}",
+            "net.serenity-bdd:serenity-rest-assured:${serenityVersion}",
+            "net.serenity-bdd:serenity-ensure:${serenityVersion}",
+            "junit:junit:${junitVersion}",
+            "org.assertj:assertj-core:${assertJVersion}"
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

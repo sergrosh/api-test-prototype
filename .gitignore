@@ -1,0 +1,15 @@
+.idea
+.gradle
+gradlew.bat
+test.log
+test-integration.log
+build
+target
+**/src-gen/*
+build/
+out/
+logs/
+cache/
+public/
+kubeconfig
+*.hprof
