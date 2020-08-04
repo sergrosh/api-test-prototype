@@ -1,8 +1,8 @@
 package com.intentwise.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.intentwise.model.Campaign;
-import com.intentwise.model.CampaignsResponse;
+import com.intentwise.model.SPKeyword;
+import com.intentwise.model.SPKeywordResponse;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.io.IOException;
@@ -19,15 +19,15 @@ public class MockDataUtil {
     private MockDataUtil() {
     }
 
-    private static CampaignsResponse getMockedCampaignResponse(String filePath) throws IOException, URISyntaxException {
+    private static SPKeywordResponse getMockedCampaignResponse(String filePath) throws IOException, URISyntaxException {
         URL resource = MockDataUtil.class.getClassLoader().getResource(filePath);
-        return objectMapper.readValue(Paths.get(resource.toURI()).toFile(), CampaignsResponse.class);
+        return objectMapper.readValue(Paths.get(resource.toURI()).toFile(), SPKeywordResponse.class);
     }
 
-    public static boolean matchMockCampaignResponse(CampaignsResponse campaignsResponse, String mockResponseFilePath) throws IOException, URISyntaxException {
-        CampaignsResponse mockedCampaignResponse = getMockedCampaignResponse(mockResponseFilePath);
+    public static boolean matchMockSPKeywordResponse(SPKeywordResponse spKeywordResponse, String mockResponseFilePath) throws IOException, URISyntaxException {
+        SPKeywordResponse mockedCampaignResponse = getMockedCampaignResponse(mockResponseFilePath);
 
-        List<Campaign> diff = new ArrayList<>(CollectionUtils.disjunction(campaignsResponse.getContent(), mockedCampaignResponse.getContent()));
+        List<SPKeyword> diff = new ArrayList<>(CollectionUtils.disjunction(spKeywordResponse.getContent(), mockedCampaignResponse.getContent()));
         return diff.isEmpty();
     }
 }

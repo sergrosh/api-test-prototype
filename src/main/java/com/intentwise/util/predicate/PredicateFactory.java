@@ -1,7 +1,7 @@
 package com.intentwise.util.predicate;
 
-import com.intentwise.model.Campaign;
-import com.intentwise.model.CampaignFilter;
+import com.intentwise.model.SPKeyword;
+import com.intentwise.model.SPKeywordFilter;
 import com.intentwise.model.FilterOperator;
 import com.intentwise.model.FilterType;
 
@@ -15,65 +15,65 @@ public class PredicateFactory {
     }
 
     /**
-     * Get campaign predicate based on provided filter.
+     * Get SPKeyword predicate based on provided filter.
      *
-     * @param campaignFilter campaign filter
-     * @return campaign predicate
+     * @param spKeywordFilter spKeyword filter
+     * @return spKeyword predicate
      */
-    public static Predicate<Campaign> getCampaignPredicate(CampaignFilter campaignFilter) {
-        FilterType type = FilterType.valueOf(campaignFilter.getName().toUpperCase());
-        FilterOperator operator = FilterOperator.valueOf(campaignFilter.getOperator().toUpperCase());
+    public static Predicate<SPKeyword> getCampaignPredicate(SPKeywordFilter spKeywordFilter) {
+        FilterType type = FilterType.valueOf(spKeywordFilter.getName().toUpperCase());
+        FilterOperator operator = FilterOperator.valueOf(spKeywordFilter.getOperator().toUpperCase());
         switch (type) {
             case IMPRESSIONS:
                 switch (operator) {
                     case EQUAL:
-                        return campaign ->
-                                campaign.getImpressions().equals(Integer.valueOf(campaignFilter.getValue()));
+                        return spKeyword ->
+                                spKeyword.getImpressions().equals(Integer.valueOf(spKeywordFilter.getValue()));
                     case GREATER_THAN:
-                        return campaign ->
-                                campaign.getImpressions() > (Integer.parseInt(campaignFilter.getValue()));
+                        return spKeyword ->
+                                spKeyword.getImpressions() > (Integer.parseInt(spKeywordFilter.getValue()));
                     case LESS_THAN:
-                        return campaign ->
-                                campaign.getImpressions() < (Integer.parseInt(campaignFilter.getValue()));
+                        return spKeyword ->
+                                spKeyword.getImpressions() < (Integer.parseInt(spKeywordFilter.getValue()));
                     default:
                         throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
                 }
             case SPEND:
                 switch (operator) {
                     case EQUAL:
-                        return campaign ->
-                                Double.parseDouble(campaign.getSpend()) == (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getSpend()) == (Double.parseDouble(spKeywordFilter.getValue()));
                     case GREATER_THAN:
-                        return campaign ->
-                                Double.parseDouble(campaign.getSpend()) > (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getSpend()) > (Double.parseDouble(spKeywordFilter.getValue()));
                     case LESS_THAN:
-                        return campaign ->
-                                Double.parseDouble(campaign.getSpend()) < (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getSpend()) < (Double.parseDouble(spKeywordFilter.getValue()));
                     default:
                         throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
                 }
             case ACOS:
                 switch (operator) {
                     case EQUAL:
-                        return campaign ->
-                                Double.parseDouble(campaign.getAcos()) == (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getAcos()) == (Double.parseDouble(spKeywordFilter.getValue()));
                     case GREATER_THAN:
-                        return campaign ->
-                                Double.parseDouble(campaign.getAcos()) > (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getAcos()) > (Double.parseDouble(spKeywordFilter.getValue()));
                     case LESS_THAN:
-                        return campaign ->
-                                Double.parseDouble(campaign.getAcos()) < (Double.parseDouble(campaignFilter.getValue()));
+                        return spKeyword ->
+                                Double.parseDouble(spKeyword.getAcos()) < (Double.parseDouble(spKeywordFilter.getValue()));
                     default:
                         throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
                 }
             case CAMPAIGNID:
                 if (operator == FilterOperator.EQUAL) {
-                    return campaign ->
-                            campaign.getCampaignId().equals(campaignFilter.getValue());
+                    return spKeyword ->
+                            spKeyword.getCampaignId().equals(spKeywordFilter.getValue());
                 }
                 throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
             default:
-                throw new UnsupportedOperationException("Unsupported campaign filter type was provided");
+                throw new UnsupportedOperationException("Unsupported spKeyword filter type was provided");
         }
     }
 }

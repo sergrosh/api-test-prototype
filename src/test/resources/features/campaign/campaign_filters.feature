@@ -1,16 +1,16 @@
-Feature: Check on campaign filters
+Feature: Check on SPKeyword filters
 
-  Scenario: Campaign search without filters
-    Given no campaign filters
-    When I search campaigns
-    Then the returned campaign response should match the mock response
+  Scenario: SPKeyword search without filters
+    Given no spkeyword filters
+    When I search spkeywords
+    Then the returned spkeyword response should match the mock response
 
 
-  Scenario: Campaign search with impression filter
-    Given the following campaign filters:
+  Scenario: SPKeyword search with impression filter
+    Given the following spkeyword filters:
       | name        | value | operator     |
       | impressions | 20000 | GREATER_THAN |
-    When I search campaigns
-    Then the returned campaigns should match the criterias
-    And the returned campaign response should match the mock response
+    When I search spkeywords
+    Then the returned spkeywords should match the criterias
+    And the returned spkeyword response should match the mock response
 

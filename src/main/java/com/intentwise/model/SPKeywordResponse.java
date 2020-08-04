@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CampaignsResponse {
+public class SPKeywordResponse {
     @JsonProperty("content")
-    private List<Campaign> content = null;
+    private List<SPKeyword> content = null;
     @JsonProperty("totalElements")
     private Integer totalElements;
     @JsonProperty("totalPages")
@@ -19,12 +19,12 @@ public class CampaignsResponse {
     private Integer number;
 
     @JsonProperty("content")
-    public List<Campaign> getContent() {
+    public List<SPKeyword> getContent() {
         return content;
     }
 
     @JsonProperty("content")
-    public void setContent(List<Campaign> content) {
+    public void setContent(List<SPKeyword> content) {
         this.content = content;
     }
 

@@ -36,7 +36,7 @@ import java.util.Objects;
         "conversions",
         "orders"
 })
-public class Campaign {
+public class SPKeyword {
 
     @JsonProperty("averageCpc")
     private String averageCpc;
@@ -379,34 +379,34 @@ public class Campaign {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Campaign campaign1 = (Campaign) o;
-        return Objects.equals(averageCpc, campaign1.averageCpc) &&
-                Objects.equals(ctr, campaign1.ctr) &&
-                Objects.equals(roas, campaign1.roas) &&
-                Objects.equals(acos, campaign1.acos) &&
-                Objects.equals(conversionRate, campaign1.conversionRate) &&
-                Objects.equals(id, campaign1.id) &&
-                Objects.equals(recommendedBidCount, campaign1.recommendedBidCount) &&
-                Objects.equals(analysisDate, campaign1.analysisDate) &&
-                Objects.equals(portfolioId, campaign1.portfolioId) &&
-                Objects.equals(portfolioName, campaign1.portfolioName) &&
-                Objects.equals(adgroup, campaign1.adgroup) &&
-                Objects.equals(campaign, campaign1.campaign) &&
-                Objects.equals(keywordText, campaign1.keywordText) &&
-                Objects.equals(matchType, campaign1.matchType) &&
-                Objects.equals(currentBid, campaign1.currentBid) &&
-                Objects.equals(recommendedBid, campaign1.recommendedBid) &&
-                Objects.equals(campaignId, campaign1.campaignId) &&
-                Objects.equals(keywordId, campaign1.keywordId) &&
-                Objects.equals(adGroupId, campaign1.adGroupId) &&
-                Objects.equals(spend, campaign1.spend) &&
-                Objects.equals(revenue, campaign1.revenue) &&
-                Objects.equals(impressions, campaign1.impressions) &&
-                Objects.equals(clicks, campaign1.clicks) &&
-                Objects.equals(state, campaign1.state) &&
-                Objects.equals(targetAcos, campaign1.targetAcos) &&
-                Objects.equals(conversions, campaign1.conversions) &&
-                Objects.equals(orders, campaign1.orders);
+        SPKeyword spKeyword1 = (SPKeyword) o;
+        return Objects.equals(averageCpc, spKeyword1.averageCpc) &&
+                Objects.equals(ctr, spKeyword1.ctr) &&
+                Objects.equals(roas, spKeyword1.roas) &&
+                Objects.equals(acos, spKeyword1.acos) &&
+                Objects.equals(conversionRate, spKeyword1.conversionRate) &&
+                Objects.equals(id, spKeyword1.id) &&
+                Objects.equals(recommendedBidCount, spKeyword1.recommendedBidCount) &&
+                Objects.equals(analysisDate, spKeyword1.analysisDate) &&
+                Objects.equals(portfolioId, spKeyword1.portfolioId) &&
+                Objects.equals(portfolioName, spKeyword1.portfolioName) &&
+                Objects.equals(adgroup, spKeyword1.adgroup) &&
+                Objects.equals(campaign, spKeyword1.campaign) &&
+                Objects.equals(keywordText, spKeyword1.keywordText) &&
+                Objects.equals(matchType, spKeyword1.matchType) &&
+                Objects.equals(currentBid, spKeyword1.currentBid) &&
+                Objects.equals(recommendedBid, spKeyword1.recommendedBid) &&
+                Objects.equals(campaignId, spKeyword1.campaignId) &&
+                Objects.equals(keywordId, spKeyword1.keywordId) &&
+                Objects.equals(adGroupId, spKeyword1.adGroupId) &&
+                Objects.equals(spend, spKeyword1.spend) &&
+                Objects.equals(revenue, spKeyword1.revenue) &&
+                Objects.equals(impressions, spKeyword1.impressions) &&
+                Objects.equals(clicks, spKeyword1.clicks) &&
+                Objects.equals(state, spKeyword1.state) &&
+                Objects.equals(targetAcos, spKeyword1.targetAcos) &&
+                Objects.equals(conversions, spKeyword1.conversions) &&
+                Objects.equals(orders, spKeyword1.orders);
     }
 
     @Override

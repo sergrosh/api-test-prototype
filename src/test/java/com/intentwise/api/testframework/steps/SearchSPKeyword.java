@@ -3,7 +3,7 @@ package com.intentwise.api.testframework.steps;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intentwise.api.testframework.IntentwiseEndpoints;
-import com.intentwise.model.CampaignFilter;
+import com.intentwise.model.SPKeywordFilter;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import org.springframework.util.CollectionUtils;
@@ -13,26 +13,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SearchCampaigns {
+public class SearchSPKeyword {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Step("Search campaigns")
+    @Step("Search SPKeywords")
     public void withFilters(String filters) {
         SerenityRest.given()
                 .contentType("application/json")
                 .header("Content-Type", "application/json")
-                .header("X-AUTH-TOKEN", "003e7671-5a53-4423-b8a0-8630f37aa8d4")
+                .header("X-AUTH-TOKEN", System.getProperty("auth-token"))
                 .body(filters)
                 .when()
-                .post(IntentwiseEndpoints.CAMPAIGNS_PREDEFINED.getUrl());
+                .post(IntentwiseEndpoints.SEARCH_SP_KEYWORDS.getUrl());
     }
 
     @Step("Transform filters to json string")
-    public String transformFiltersToJsonString(List<Map<String, String>> campaignFilters) throws JsonProcessingException {
-        if (!CollectionUtils.isEmpty(campaignFilters)) {
+    public String transformFiltersToJsonString(List<Map<String, String>> spKeywordFilters) throws JsonProcessingException {
+        if (!CollectionUtils.isEmpty(spKeywordFilters)) {
             List<Map<String, Object>> modifiedFilters = new ArrayList<>();
-            campaignFilters.forEach(filter -> {
+            spKeywordFilters.forEach(filter -> {
                 Map<String, Object> modifiedFilter = new HashMap<>(filter);
                 if (filter.containsKey("value")) {
                     modifiedFilter.put("value", List.of(filter.get("value").split(",")));
@@ -45,10 +45,10 @@ public class SearchCampaigns {
     }
 
     @Step("Transform filters")
-    public List<CampaignFilter> transformFilters(List<Map<String, String>> campaignFilters) {
-        List<CampaignFilter> transformedFilters = new ArrayList<>();
-        for (Map<String, String> filter : campaignFilters) {
-            transformedFilters.add(objectMapper.convertValue(filter, CampaignFilter.class));
+    public List<SPKeywordFilter> transformFilters(List<Map<String, String>> spKeywordFilters) {
+        List<SPKeywordFilter> transformedFilters = new ArrayList<>();
+        for (Map<String, String> filter : spKeywordFilters) {
+            transformedFilters.add(objectMapper.convertValue(filter, SPKeywordFilter.class));
         }
         return transformedFilters;
     }

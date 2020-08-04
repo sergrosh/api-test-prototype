@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "value",
         "operator"
 })
-public class CampaignFilter {
+public class SPKeywordFilter {
 
     @JsonProperty("name")
     private String name;
