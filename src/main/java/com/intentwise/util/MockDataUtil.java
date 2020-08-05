@@ -23,7 +23,7 @@ public class MockDataUtil {
     private MockDataUtil() {
     }
 
-    private static SPKeywordResponse getMockedCampaignResponse(String filePath) throws IOException, URISyntaxException {
+    private static SPKeywordResponse getMockedSPKeywordResponse(String filePath) throws IOException, URISyntaxException {
         if (spKeywordResponse == null) {
             URL resource = MockDataUtil.class.getClassLoader().getResource(filePath);
             spKeywordResponse = objectMapper.readValue(Paths.get(resource.toURI()).toFile(), SPKeywordResponse.class);
@@ -31,10 +31,12 @@ public class MockDataUtil {
         return spKeywordResponse;
     }
 
-    public static boolean matchMockSPKeywordResponse(SPKeywordResponse spKeywordResponse, String mockResponseFilePath, List<SPKeywordFilter> filters) throws IOException, URISyntaxException {
-        SPKeywordResponse mockedCampaignResponse = getMockedCampaignResponse(mockResponseFilePath);
-        List<SPKeyword> filteredMockSPKeywords = filterSPKeywords(mockedCampaignResponse.getContent(), filters);
-        List<SPKeyword> diff = new ArrayList<>(CollectionUtils.disjunction(spKeywordResponse.getContent(), filteredMockSPKeywords));
+    public static boolean matchMockSPKeywordResponse(SPKeywordResponse spKeywordResponse, String mockResponseFilePath,
+                                                     List<SPKeywordFilter> filters) throws IOException, URISyntaxException {
+        SPKeywordResponse mockedSPKeywordResponse = getMockedSPKeywordResponse(mockResponseFilePath);
+        List<SPKeyword> filteredMockSPKeywords = filterSPKeywords(mockedSPKeywordResponse.getContent(), filters);
+        List<SPKeyword> diff = new ArrayList<>(CollectionUtils.disjunction(spKeywordResponse.getContent(),
+                filteredMockSPKeywords));
         return diff.isEmpty();
     }
 }

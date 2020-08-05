@@ -4,10 +4,7 @@ import com.intentwise.model.FilterOperator;
 import com.intentwise.model.FilterType;
 import com.intentwise.model.SPKeyword;
 import com.intentwise.model.SPKeywordFilter;
-import com.intentwise.util.predicate.filter.AcosFilterPredicate;
-import com.intentwise.util.predicate.filter.CampaignIdFilterPredicate;
-import com.intentwise.util.predicate.filter.ImpressionFilterPredicate;
-import com.intentwise.util.predicate.filter.SpendPredicate;
+import com.intentwise.util.predicate.filter.*;
 
 import java.util.function.Predicate;
 
@@ -22,7 +19,7 @@ public class PredicateFactory {
      * @param filter spKeyword filter
      * @return spKeyword predicate
      */
-    public static Predicate<SPKeyword> getCampaignPredicate(SPKeywordFilter filter) {
+    public static Predicate<SPKeyword> getSPKeywordPredicate(SPKeywordFilter filter) {
         FilterType type = FilterType.valueOf(filter.getName().toUpperCase());
         FilterOperator operator = FilterOperator.valueOf(filter.getOperator().toUpperCase());
         switch (type) {
@@ -34,6 +31,8 @@ public class PredicateFactory {
                 return new AcosFilterPredicate(operator, filter);
             case CAMPAIGNID:
                 return new CampaignIdFilterPredicate(operator, filter);
+            case AVERAGECPC:
+                return new AverageCpcFilterPredicate(operator, filter);
             default:
                 throw new UnsupportedOperationException("Unsupported spKeyword filter type was provided");
         }

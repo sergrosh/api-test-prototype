@@ -30,10 +30,10 @@ public class SPKeywordFilterCheckUtil {
     }
 
     private static Predicate<SPKeyword> buildSPKeywordPredicate(List<SPKeywordFilter> filters) {
-        Predicate<SPKeyword> predicate = PredicateFactory.getCampaignPredicate(filters.get(0));
+        Predicate<SPKeyword> predicate = PredicateFactory.getSPKeywordPredicate(filters.get(0));
         if (filters.size() > 1) {
             for (int i = 1; i < filters.size(); i++) {
-                predicate = predicate.and(PredicateFactory.getCampaignPredicate(filters.get(i)));
+                predicate = predicate.and(PredicateFactory.getSPKeywordPredicate(filters.get(i)));
             }
         }
         return predicate;
