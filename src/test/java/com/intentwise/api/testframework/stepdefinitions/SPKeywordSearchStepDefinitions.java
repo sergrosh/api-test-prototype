@@ -3,8 +3,8 @@ package com.intentwise.api.testframework.stepdefinitions;
 import com.intentwise.api.testframework.steps.SearchSPKeyword;
 import com.intentwise.model.SPKeywordFilter;
 import com.intentwise.model.SPKeywordResponse;
-import com.intentwise.util.SPKeywordFilterCheckUtil;
 import com.intentwise.util.MockDataUtil;
+import com.intentwise.util.SPKeywordFilterCheckUtil;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -54,7 +54,7 @@ public class SPKeywordSearchStepDefinitions {
 
     @Then("the returned spkeyword response should match the mock response")
     public void the_returned_spkeywords_should_match_mock_response() throws IOException, URISyntaxException {
-        Assert.assertTrue(MockDataUtil.matchMockSPKeywordResponse(spKeywordResponse, "data/mock_response.json"));
+        Assert.assertTrue(MockDataUtil.matchMockSPKeywordResponse(spKeywordResponse, "data/mock_response.json", spKeywordFilters));
     }
 
 }

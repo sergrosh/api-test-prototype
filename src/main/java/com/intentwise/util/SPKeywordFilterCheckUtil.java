@@ -17,19 +17,19 @@ public class SPKeywordFilterCheckUtil {
         if (filters.isEmpty()) {
             return true;
         }
-        Predicate<SPKeyword> predicate = buildCampaignPredicate(filters);
+        Predicate<SPKeyword> predicate = buildSPKeywordPredicate(filters);
         return spKeywords.stream().allMatch(predicate);
     }
 
-    public static List<SPKeyword> filterCampaigns(List<SPKeyword> spKeywords, List<SPKeywordFilter> filters) {
+    static List<SPKeyword> filterSPKeywords(List<SPKeyword> spKeywords, List<SPKeywordFilter> filters) {
         if (filters.isEmpty()) {
             return spKeywords;
         }
-        Predicate<SPKeyword> predicate = buildCampaignPredicate(filters);
+        Predicate<SPKeyword> predicate = buildSPKeywordPredicate(filters);
         return spKeywords.stream().filter(predicate).collect(Collectors.toList());
     }
 
-    private static Predicate<SPKeyword> buildCampaignPredicate(List<SPKeywordFilter> filters) {
+    private static Predicate<SPKeyword> buildSPKeywordPredicate(List<SPKeywordFilter> filters) {
         Predicate<SPKeyword> predicate = PredicateFactory.getCampaignPredicate(filters.get(0));
         if (filters.size() > 1) {
             for (int i = 1; i < filters.size(); i++) {

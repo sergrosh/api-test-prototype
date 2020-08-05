@@ -47,9 +47,8 @@ public class SearchSPKeyword {
     @Step("Transform filters")
     public List<SPKeywordFilter> transformFilters(List<Map<String, String>> spKeywordFilters) {
         List<SPKeywordFilter> transformedFilters = new ArrayList<>();
-        for (Map<String, String> filter : spKeywordFilters) {
-            transformedFilters.add(objectMapper.convertValue(filter, SPKeywordFilter.class));
-        }
+        spKeywordFilters.forEach(filter ->
+                transformedFilters.add(objectMapper.convertValue(filter, SPKeywordFilter.class)));
         return transformedFilters;
     }
 

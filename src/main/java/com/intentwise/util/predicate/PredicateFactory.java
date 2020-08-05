@@ -1,15 +1,17 @@
 package com.intentwise.util.predicate;
 
-import com.intentwise.model.SPKeyword;
-import com.intentwise.model.SPKeywordFilter;
 import com.intentwise.model.FilterOperator;
 import com.intentwise.model.FilterType;
+import com.intentwise.model.SPKeyword;
+import com.intentwise.model.SPKeywordFilter;
+import com.intentwise.util.predicate.filter.AcosFilterPredicate;
+import com.intentwise.util.predicate.filter.CampaignIdFilterPredicate;
+import com.intentwise.util.predicate.filter.ImpressionFilterPredicate;
+import com.intentwise.util.predicate.filter.SpendPredicate;
 
 import java.util.function.Predicate;
 
 public class PredicateFactory {
-
-    private static final String UNSUPPORTED_OPERATOR = "Unsupported operator was provided";
 
     private PredicateFactory() {
     }
@@ -17,61 +19,21 @@ public class PredicateFactory {
     /**
      * Get SPKeyword predicate based on provided filter.
      *
-     * @param spKeywordFilter spKeyword filter
+     * @param filter spKeyword filter
      * @return spKeyword predicate
      */
-    public static Predicate<SPKeyword> getCampaignPredicate(SPKeywordFilter spKeywordFilter) {
-        FilterType type = FilterType.valueOf(spKeywordFilter.getName().toUpperCase());
-        FilterOperator operator = FilterOperator.valueOf(spKeywordFilter.getOperator().toUpperCase());
+    public static Predicate<SPKeyword> getCampaignPredicate(SPKeywordFilter filter) {
+        FilterType type = FilterType.valueOf(filter.getName().toUpperCase());
+        FilterOperator operator = FilterOperator.valueOf(filter.getOperator().toUpperCase());
         switch (type) {
             case IMPRESSIONS:
-                switch (operator) {
-                    case EQUAL:
-                        return spKeyword ->
-                                spKeyword.getImpressions().equals(Integer.valueOf(spKeywordFilter.getValue()));
-                    case GREATER_THAN:
-                        return spKeyword ->
-                                spKeyword.getImpressions() > (Integer.parseInt(spKeywordFilter.getValue()));
-                    case LESS_THAN:
-                        return spKeyword ->
-                                spKeyword.getImpressions() < (Integer.parseInt(spKeywordFilter.getValue()));
-                    default:
-                        throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
-                }
+                return new ImpressionFilterPredicate(operator, filter);
             case SPEND:
-                switch (operator) {
-                    case EQUAL:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getSpend()) == (Double.parseDouble(spKeywordFilter.getValue()));
-                    case GREATER_THAN:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getSpend()) > (Double.parseDouble(spKeywordFilter.getValue()));
-                    case LESS_THAN:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getSpend()) < (Double.parseDouble(spKeywordFilter.getValue()));
-                    default:
-                        throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
-                }
+                return new SpendPredicate(operator, filter);
             case ACOS:
-                switch (operator) {
-                    case EQUAL:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getAcos()) == (Double.parseDouble(spKeywordFilter.getValue()));
-                    case GREATER_THAN:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getAcos()) > (Double.parseDouble(spKeywordFilter.getValue()));
-                    case LESS_THAN:
-                        return spKeyword ->
-                                Double.parseDouble(spKeyword.getAcos()) < (Double.parseDouble(spKeywordFilter.getValue()));
-                    default:
-                        throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
-                }
+                return new AcosFilterPredicate(operator, filter);
             case CAMPAIGNID:
-                if (operator == FilterOperator.EQUAL) {
-                    return spKeyword ->
-                            spKeyword.getCampaignId().equals(spKeywordFilter.getValue());
-                }
-                throw new UnsupportedOperationException(UNSUPPORTED_OPERATOR);
+                return new CampaignIdFilterPredicate(operator, filter);
             default:
                 throw new UnsupportedOperationException("Unsupported spKeyword filter type was provided");
         }

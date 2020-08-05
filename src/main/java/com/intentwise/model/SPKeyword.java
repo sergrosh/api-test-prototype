@@ -386,7 +386,7 @@ public class SPKeyword {
                 Objects.equals(acos, spKeyword1.acos) &&
                 Objects.equals(conversionRate, spKeyword1.conversionRate) &&
                 Objects.equals(id, spKeyword1.id) &&
-                Objects.equals(recommendedBidCount, spKeyword1.recommendedBidCount) &&
+//                Objects.equals(recommendedBidCount, spKeyword1.recommendedBidCount) &&
                 Objects.equals(analysisDate, spKeyword1.analysisDate) &&
                 Objects.equals(portfolioId, spKeyword1.portfolioId) &&
                 Objects.equals(portfolioName, spKeyword1.portfolioName) &&
@@ -411,6 +411,8 @@ public class SPKeyword {
 
     @Override
     public int hashCode() {
-        return Objects.hash(averageCpc, ctr, roas, acos, conversionRate, id, recommendedBidCount, analysisDate, portfolioId, portfolioName, adgroup, campaign, keywordText, matchType, currentBid, recommendedBid, campaignId, keywordId, adGroupId, spend, revenue, impressions, clicks, state, targetAcos, conversions, orders);
+        return Objects.hash(averageCpc, ctr, roas, acos, conversionRate, id,
+//                recommendedBidCount,
+                analysisDate, portfolioId, portfolioName, adgroup, campaign, keywordText, matchType, currentBid, recommendedBid, campaignId, keywordId, adGroupId, spend, revenue, impressions, clicks, state, targetAcos, conversions, orders);
     }
 }
