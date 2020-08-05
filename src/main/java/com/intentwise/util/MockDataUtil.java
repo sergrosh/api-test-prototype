@@ -18,13 +18,17 @@ import static com.intentwise.util.SPKeywordFilterCheckUtil.filterSPKeywords;
 public class MockDataUtil {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private static SPKeywordResponse spKeywordResponse;
 
     private MockDataUtil() {
     }
 
     private static SPKeywordResponse getMockedCampaignResponse(String filePath) throws IOException, URISyntaxException {
-        URL resource = MockDataUtil.class.getClassLoader().getResource(filePath);
-        return objectMapper.readValue(Paths.get(resource.toURI()).toFile(), SPKeywordResponse.class);
+        if (spKeywordResponse == null) {
+            URL resource = MockDataUtil.class.getClassLoader().getResource(filePath);
+            spKeywordResponse = objectMapper.readValue(Paths.get(resource.toURI()).toFile(), SPKeywordResponse.class);
+        }
+        return spKeywordResponse;
     }
 
     public static boolean matchMockSPKeywordResponse(SPKeywordResponse spKeywordResponse, String mockResponseFilePath, List<SPKeywordFilter> filters) throws IOException, URISyntaxException {
