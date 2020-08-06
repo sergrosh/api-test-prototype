@@ -12,4 +12,4 @@ artifacts:
   type: zip
   files:
     - '**/*'
-  base-directory: 'target/site/serenity'
+  base-directory: 'target/site'

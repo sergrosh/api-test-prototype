@@ -8,10 +8,7 @@ import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SearchSPKeyword {
 
@@ -35,7 +32,7 @@ public class SearchSPKeyword {
             spKeywordFilters.forEach(filter -> {
                 Map<String, Object> modifiedFilter = new HashMap<>(filter);
                 if (filter.containsKey("value")) {
-                    modifiedFilter.put("value", List.of(filter.get("value").split(",")));
+                    modifiedFilter.put("value", Arrays.asList(filter.get("value").split(",")));
                 }
                 modifiedFilters.add(modifiedFilter);
             });
