@@ -11,4 +11,5 @@ phases:
 artifacts:
   type: zip
   files:
-    - 'target/site/serenity/*'
+    - '**/*'
+  base-directory: 'target/site/serenity'
