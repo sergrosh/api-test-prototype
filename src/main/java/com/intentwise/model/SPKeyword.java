@@ -404,7 +404,7 @@ public class SPKeyword {
                 Objects.equals(impressions, spKeyword1.impressions) &&
                 Objects.equals(clicks, spKeyword1.clicks) &&
                 Objects.equals(state, spKeyword1.state) &&
-                Objects.equals(targetAcos, spKeyword1.targetAcos) &&
+//                Objects.equals(targetAcos, spKeyword1.targetAcos) &&
                 Objects.equals(conversions, spKeyword1.conversions) &&
                 Objects.equals(orders, spKeyword1.orders);
     }
@@ -413,6 +413,8 @@ public class SPKeyword {
     public int hashCode() {
         return Objects.hash(averageCpc, ctr, roas, acos, conversionRate, id,
 //                recommendedBidCount,
-                analysisDate, portfolioId, portfolioName, adgroup, campaign, keywordText, matchType, currentBid, recommendedBid, campaignId, keywordId, adGroupId, spend, revenue, impressions, clicks, state, targetAcos, conversions, orders);
+                analysisDate, portfolioId, portfolioName, adgroup, campaign, keywordText, matchType, currentBid, recommendedBid, campaignId, keywordId, adGroupId, spend, revenue, impressions, clicks, state,
+//                targetAcos,
+                conversions, orders);
     }
 }
