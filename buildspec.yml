@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Entering install phase...
+  build:
+    commands:
+      - echo API tests started on `date`
+      - gradle clean test aggregate -Dauth-token=003e7671-5a53-4423-b8a0-8630f37aa8d4
+artifacts:
+  type: zip
+  files:
+    - 'target/site/serenity/*'
