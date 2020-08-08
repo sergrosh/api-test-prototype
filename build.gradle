@@ -47,6 +47,10 @@ dependencies {
             "org.assertj:assertj-core:${assertJVersion}"
 }
 
+serenity {
+    reports = ["single-page-html"]
+}
+
 test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
