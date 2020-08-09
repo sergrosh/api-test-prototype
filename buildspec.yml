@@ -15,11 +15,6 @@ reports:
       - "**/*"
     base-directory: 'target/site/serenity'
     discard-paths: no
-#reports:
-#  JUnitReports:
-#    files:
-#      - '**/*'
-#    base-directory: 'build/reports/tests/test'
 artifacts:
   type: zip
   files:
