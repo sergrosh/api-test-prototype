@@ -9,14 +9,14 @@ phases:
       - echo API tests started on `date`
       - gradle clean test aggregate -Dauth-token=003e7671-5a53-4423-b8a0-8630f37aa8d4
 
-reports:
-  arn:aws:codebuild:us-east-2:976371366785:report-group/api-test-report-group:
-    files:
-      - "**/*"
-    base-directory: 'target/site/serenity'
-    discard-paths: no
-#artifacts:
-#  type: zip
-#  files:
-#    - '**/*'
-#  base-directory: 'target/site'
+#reports:
+#  arn:aws:codebuild:us-east-2:976371366785:report-group/api-test-report-group:
+#    files:
+#      - "**/*"
+#    base-directory: 'target/site/serenity'
+#    discard-paths: no
+artifacts:
+  type: zip
+  files:
+    - '**/*'
+  base-directory: 'target/site'
