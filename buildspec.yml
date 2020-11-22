@@ -10,7 +10,7 @@ phases:
       - gradle clean test aggregate -Dauth-token=003e7671-5a53-4423-b8a0-8630f37aa8d4
 
 reports:
-  arn:aws:s3:::api-test-report-group/api-test-report-group/:
+  test-report:
     files:
       - "**/*"
     base-directory: 'target/site/serenity'
