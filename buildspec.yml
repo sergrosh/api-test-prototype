@@ -10,9 +10,9 @@ phases:
       - gradle clean test aggregate -Dauth-token=003e7671-5a53-4423-b8a0-8630f37aa8d4
 
 reports:
-  test-report:
+  CucumberReports:
     files:
-      - "cucumber.json"
+      - "'**/*'"
     base-directory: 'target'
     discard-paths: no
 #artifacts:
