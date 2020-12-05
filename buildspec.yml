@@ -12,8 +12,8 @@ phases:
 reports:
   test-report:
     files:
-      - "**/*"
-    base-directory: 'target/site/serenity'
+      - "TEST-com.intentwise.api.testframework.CucumberTestSuite.xml"
+    base-directory: 'build/test-results/test'
     discard-paths: no
 #artifacts:
 #  type: zip
