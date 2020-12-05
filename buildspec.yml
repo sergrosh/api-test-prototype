@@ -12,7 +12,7 @@ phases:
 reports:
   CucumberReports:
     files:
-      - "'**/*'"
+      - '**/*'
     base-directory: 'target'
     discard-paths: no
 #artifacts:
