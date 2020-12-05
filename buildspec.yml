@@ -12,8 +12,8 @@ phases:
 reports:
   test-report:
     files:
-      - "TEST-com.intentwise.api.testframework.CucumberTestSuite.xml"
-    base-directory: 'build/test-results/test'
+      - "cucumber.json"
+    base-directory: 'target'
     discard-paths: no
 #artifacts:
 #  type: zip
