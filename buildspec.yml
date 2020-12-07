@@ -16,8 +16,8 @@ reports:
     base-directory: 'target'
     discard-paths: no
 
-#artifacts:
-#  type: zip
-#  files:
-#    - '**/*'
-#  base-directory: 'target/site'
+artifacts:
+  type: zip
+  files:
+    - '**/*'
+  base-directory: 'target/site'
