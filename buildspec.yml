@@ -13,7 +13,7 @@ reports:
   CucumberReports:
     files:
       - '**/*'
-    base-directory: 'target/cucumber'
+    base-directory: 'target'
     discard-paths: no
 
 #artifacts:
