@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/html-report",
-                "json:target/cucumber.json"},
+                "json:target/cucumber/cucumber.json"},
         features = "classpath:features"
 )
 public class CucumberTestSuite {
