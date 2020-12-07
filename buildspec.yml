@@ -15,6 +15,11 @@ reports:
       - '**/*'
     base-directory: 'target'
     discard-paths: no
+  arn:aws:codebuild:us-east-2:976371366785:report-group/api-test-report-group:
+    files:
+      - "**/*"
+    base-directory: 'target/site/serenity'
+    discard-paths: no
 
 artifacts:
   type: zip
