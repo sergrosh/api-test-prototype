@@ -13,7 +13,7 @@ reports:
   cucumber-report:
     files:
       - '**/*'
-    base-directory: 'target'
+    base-directory: 'target/cucumber'
     discard-paths: no
   serenity-report:
     files:
