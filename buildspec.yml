@@ -10,19 +10,13 @@ phases:
       - gradle clean test aggregate -Dauth-token=003e7671-5a53-4423-b8a0-8630f37aa8d4
 
 reports:
-  CucumberReports:
+  cucumber-report:
     files:
       - '**/*'
     base-directory: 'target'
     discard-paths: no
-  api-test-report-group:
+  serenity-report:
     files:
       - "**/*"
     base-directory: 'target/site/serenity'
     discard-paths: no
-
-#artifacts:
-#  type: zip
-#  files:
-#    - '**/*'
-#  base-directory: 'target/site'
