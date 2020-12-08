@@ -1,17 +1,17 @@
 package com.intentwise.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.intentwise.model.SPKeyword;
-import com.intentwise.model.SPKeywordFilter;
-import com.intentwise.model.SPKeywordResponse;
-import org.apache.commons.collections4.CollectionUtils;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.intentwise.model.SPKeyword;
+import com.intentwise.model.SPKeywordFilter;
+import com.intentwise.model.SPKeywordResponse;
+import org.apache.commons.collections4.CollectionUtils;
 
 import static com.intentwise.util.SPKeywordFilterCheckUtil.filterSPKeywords;
 

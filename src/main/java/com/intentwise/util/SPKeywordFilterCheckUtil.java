@@ -1,12 +1,12 @@
 package com.intentwise.util;
 
-import com.intentwise.model.SPKeyword;
-import com.intentwise.model.SPKeywordFilter;
-import com.intentwise.util.predicate.PredicateFactory;
-
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import com.intentwise.model.SPKeyword;
+import com.intentwise.model.SPKeywordFilter;
+import com.intentwise.util.predicate.PredicateFactory;
 
 public class SPKeywordFilterCheckUtil {
 

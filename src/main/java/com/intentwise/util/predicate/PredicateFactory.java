@@ -1,12 +1,16 @@
 package com.intentwise.util.predicate;
 
+import java.util.function.Predicate;
+
 import com.intentwise.model.FilterOperator;
 import com.intentwise.model.FilterType;
 import com.intentwise.model.SPKeyword;
 import com.intentwise.model.SPKeywordFilter;
-import com.intentwise.util.predicate.filter.*;
-
-import java.util.function.Predicate;
+import com.intentwise.util.predicate.filter.AcosFilterPredicate;
+import com.intentwise.util.predicate.filter.AverageCpcFilterPredicate;
+import com.intentwise.util.predicate.filter.CampaignIdFilterPredicate;
+import com.intentwise.util.predicate.filter.ImpressionFilterPredicate;
+import com.intentwise.util.predicate.filter.SpendPredicate;
 
 public class PredicateFactory {
 

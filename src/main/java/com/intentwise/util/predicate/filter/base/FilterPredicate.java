@@ -1,10 +1,10 @@
 package com.intentwise.util.predicate.filter.base;
 
+import java.util.function.Predicate;
+
 import com.intentwise.model.FilterOperator;
 import com.intentwise.model.SPKeyword;
 import com.intentwise.model.SPKeywordFilter;
-
-import java.util.function.Predicate;
 
 public abstract class FilterPredicate implements Predicate<SPKeyword> {
     protected static final String UNSUPPORTED_OPERATOR = "Unsupported operator was provided";

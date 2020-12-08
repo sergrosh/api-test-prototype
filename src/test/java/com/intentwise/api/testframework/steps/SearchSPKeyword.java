@@ -1,5 +1,11 @@
 package com.intentwise.api.testframework.steps;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.intentwise.api.testframework.IntentwiseEndpoints;
@@ -7,8 +13,6 @@ import com.intentwise.model.SPKeywordFilter;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 import org.springframework.util.CollectionUtils;
-
-import java.util.*;
 
 public class SearchSPKeyword {
 

@@ -1,5 +1,11 @@
 package com.intentwise.api.testframework.stepdefinitions;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 import com.intentwise.api.testframework.steps.SearchSPKeyword;
 import com.intentwise.model.SPKeywordFilter;
 import com.intentwise.model.SPKeywordResponse;
@@ -11,12 +17,6 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import org.junit.Assert;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 import static net.serenitybdd.rest.SerenityRest.restAssuredThat;
 
